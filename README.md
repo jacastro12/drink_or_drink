@@ -1,1 +1,5 @@
-# primer_projeto_ironhack
+# First Ironhack Project
+
+<h3>Jonathan Castro</h3>
+
+Initialized project from Ironhack
