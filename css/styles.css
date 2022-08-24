@@ -5,6 +5,11 @@ body{
     background-color: #e85d75;
     color: white;
 }
+
+
+.responsive-logo{
+    display: none;
+}
 input{
     padding: 15px 15px 15px 15px;
     border: none;
@@ -35,6 +40,7 @@ select{
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 3%;
+    padding: 0;
 }
 #usersList >li{
     display: inline;
@@ -136,4 +142,53 @@ select{
   }
  .results{
     color: gray;
+ }
+
+ @media screen and (max-width: 600px) {
+    .wide-logo{
+        display: none;
+    }
+    .responsive-logo{
+        display: block;
+    }
+    h3{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    input{
+        padding: 8px 8px 8px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+    select{
+        padding: 8px 8px 8px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+    #addUser{
+        padding: 8px 8px 8px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+        color: white;
+        background-color: #F19EAC;
+        cursor:pointer;
+    }
+    .form{
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    #usersList{
+        padding: 0;
+    }
+    #usersList >li{
+        display: inline;
+        padding: 8px 8px 8px 8px;
+        border-radius: 5px;
+        border: 2px solid #F19EAC;
+        margin-right: 2%;
+        font-size: 10px;
+    }
  }
