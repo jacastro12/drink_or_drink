@@ -201,7 +201,10 @@ select{
  }
  @media screen and (max-width: 1400px) {
     .obj{
-        width: 75px;
+        width: 70px;
+    }
+    #bottle{
+        width: 60px;
     }
  }
 
