@@ -199,5 +199,10 @@ select{
         font-size: 10px;
     }
  }
+ @media screen and (max-width: 1400px) {
+    .obj{
+        width: 75px;
+    }
+ }
 
  

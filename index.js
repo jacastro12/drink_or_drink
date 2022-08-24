@@ -124,10 +124,13 @@ function randomizeArray(list) {
 function renderElementsInCircle() {
 
     const n = 16;  // numero de circulos
+    const screenWidth = screen.width
     // let r = 320 // radio
-    let r = 220 // radio
-    if (screen.width <= 600) {
+    let r = 200 // radio
+    if (screenWidth <= 600) {
         r = 160 // radio
+    } else if (screenWidth >= 1400) {
+        r = 320;
     }
 
 
