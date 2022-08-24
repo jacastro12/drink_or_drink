@@ -199,12 +199,12 @@ select{
         font-size: 10px;
     }
  }
- @media screen and (min-width: 1376px) {
+ @media screen and (max-width: 1376px) {
     .obj{
         width: 70px;
     }
     #bottle{
-        width: 60px;
+        width: 70px;
     }
  }
 
