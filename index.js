@@ -129,7 +129,12 @@ function renderElementsInCircle() {
     let r = 200 // radio
     if (screenWidth <= 600) {
         r = 160 // radio
-    } else if (screenWidth >= 1400) {
+    } else if (screenWidth > 600 && screenWidth <= 1000) {
+        r = 200 // radio
+    } else if (screenWidth > 1000 && screenWidth < 1376) {
+        r = 220
+    }
+    else if (screenWidth >= 1376) {
         r = 320;
     }
 
