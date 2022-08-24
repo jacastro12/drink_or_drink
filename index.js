@@ -125,7 +125,7 @@ function renderElementsInCircle() {
 
     const n = 16;  // numero de circulos
     // let r = 320 // radio
-    let r = 280 // radio
+    let r = 220 // radio
     if (screen.width <= 600) {
         r = 160 // radio
     }
