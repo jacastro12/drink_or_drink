@@ -1,21 +1,93 @@
+body{
+    padding: 0 20% 0 20%;
+    font-family: "Raleway";
+    background-color: #e85d75;
+    color: white;
+}
+input{
+    padding: 15px 15px 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+}
+select{
+    padding: 15px 15px 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+}
+#addUser{
+    padding: 15px 15px 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    color: white;
+    background-color: #F19EAC;
+    cursor:pointer;
+}
+#addUser:hover{
+    background-color: #af5a68;
+    border: 1px solid #F19EAC;
+}
+#usersList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3%;
+}
+#usersList >li{
+    display: inline;
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
+    border: 2px solid #F19EAC;
+    margin-right: 2%;
+}
+
+#initForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+#startGame{
+    cursor: pointer;
+    padding: 15px 15px 15px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: rgb(155, 88, 0);
+    font-weight: bold;
+    background-color: #f7cb15;
+    display: none;
+}
 .row{
     display: flex;
     justify-content: space-between
 }
 
 #bottle{
-    position:absolute;
-    margin-left: 25%;
-    margin-top: 12%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
+    cursor: pointer;
 }
 
-body{
-    padding: 0 20% 0 20%;
-}
 
+
+#game{
+    display: none;
+}
 
 .element{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100px;
     height: 100px;
     border-radius:50%;
@@ -23,16 +95,44 @@ body{
     left: 50%;
     transform: translate(-50%,-50%)
   }
+
+  .element > p{
+    margin-top: -10%;
+    background-color: #af5a68;
+    color: white;
+    border-radius: 10px;
+    padding: 0 6% 0 6%;
+    z-index: 1000;
+}
   
   #circle{
-    position: relative;
+    /* position: relative;
     width: 100%;
     height:auto;
     margin: auto;
     margin-top: 40%;
-    margin-left: 0%;
+    margin-left: 0%; */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
   }
 
-  img {
-    filter: grayscale(100%);
+  .alertWindow{
+    display: flex;
+    flex-wrap: no;
+    justify-content: center;
   }
+  .alertWindow > div>img{
+    width: 150px;
+    margin-right:10px;
+  }
+  .alertWindow > div > p{
+    margin-top: -1%;
+    color: gray;
+  }
+ .results{
+    color: gray;
+ }
