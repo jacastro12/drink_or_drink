@@ -124,7 +124,11 @@ function randomizeArray(list) {
 function renderElementsInCircle() {
 
     const n = 16;  // numero de circulos
-    const r = 320 // radio
+    let r = 320 // radio
+    if (screen.width <= 600) {
+        r = 160 // radio
+    }
+
 
     let angulo = 0;
 
@@ -133,12 +137,12 @@ function renderElementsInCircle() {
     circleItems.forEach(element => {
         if (element.type == "USER") {
             div.innerHTML += `<div class="element" initDegree="${element.init_degree}" endDegree="${element.end_degree}">
-                            <img id="img${element.index}" class="obj" src="${element.src}" width="100px">
+                            <img id="img${element.index}" class="obj" src="${element.src}">
                             <p>${element.name}</p>
                           <div>`
         } else {
             div.innerHTML += `<div class="element" initDegree="${element.init_degree}" endDegree="${element.end_degree}">
-                                <img id="img${element.index}" class="obj" src="${element.src}" width="100px">
+                                <img id="img${element.index}" class="obj" src="${element.src}">
                             <div>`
         }
 
