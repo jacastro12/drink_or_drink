@@ -1,6 +1,7 @@
 body{
     padding: 0 20% 0 20%;
-    font-family: "Raleway";
+    /* font-family: "Raleway"; */
+    font-family: 'Poppins', sans-serif;
     background-color: #e85d75;
     color: white;
 }
