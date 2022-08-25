@@ -1,7 +1,7 @@
 const users = [
 ]
 let results = []
-const newArray = []
+let newArray = []
 const GIFTS = [
     { name: "Desafío", src: "./src/img/desafio.svg", description: "tiene que realizar un desafío" },
     { name: "Verdad", src: "./src/img/truth.svg", description: "tiene que decir una verdad" },
@@ -35,8 +35,20 @@ class User {
     renderUser() {
         const li = document.createElement("li")
         li.innerText = this.name
+        const button = document.createElement("button")
+        button.innerText = "x"
+        button.id = this.index
+        li.appendChild(button)
+        button.addEventListener("click", event => {
+            event.target.parentNode.remove()
+            const index = users.find(element => element.index == event.target.id).index
+            this.removeUser(index)
+        })
         document.getElementById("usersList").appendChild(li)
         users.push(this)
+    }
+    removeUser(index) {
+        users.splice(index - 1, 1)
     }
 }
 class Gift {
@@ -77,7 +89,11 @@ function addUser() {
         const genre = document.getElementById("userGenre")
         const user = new User(index, name.value, genre.value)
         if (users.length > 1) document.getElementById("startGame").style.display = "block"
+        if (user.length > 3) document.getElementById("usersList").style.flexWrap = "wrap !important"
         user.renderUser()
+        document.getElementById("userName").value = ""
+        document.getElementById("userName").focus()
+
     })
 }
 
@@ -89,9 +105,14 @@ function startGame() {
         renderElementsInCircle()
     })
 }
+document.getElementById("reorderItems").addEventListener("click", () => {
+    // setCircleItems(users)
+    renderElementsInCircle()
+})
 function setCircleItems(list) {
     // calcular el numero de grados para cada item
     const totalCircleitems = 16
+    newArray = []
     const missingCircleItems = totalCircleitems - list.length
     let newArrayIndex = 0
     for (newArrayIndex; newArrayIndex < missingCircleItems; newArrayIndex++) {
@@ -122,7 +143,7 @@ function randomizeArray(list) {
 }
 
 function renderElementsInCircle() {
-
+    document.getElementById("circle").innerHTML = ""
     const n = 16;  // numero de circulos
     const screenWidth = screen.width
     // let r = 320 // radio
@@ -276,7 +297,7 @@ function gameAlert() {
     }
     if (results[0] === results[1]) { }
     Swal.fire({
-        title: '<strong>Legaaaal!</strong>',
+        title: '<img src="./src/img/logo-color.svg" width="80%">',
         // icon: 'info',
         html:
             '<br><div class="alertWindow">' +

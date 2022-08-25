@@ -37,17 +37,31 @@ select{
 }
 #usersList{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: center;
     margin-top: 3%;
     padding: 0;
 }
+#reorderItems{
+    z-index: 200;
+}
 #usersList >li{
-    display: inline;
+    display: flex;
     padding: 15px 15px 15px 15px;
     border-radius: 5px;
     border: 2px solid #F19EAC;
     margin-right: 2%;
+}
+#usersList >li > button{
+    border: #af5a68;
+    background-color: #F19EAC;
+    color: white;
+    border-radius: 5px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+#usersList >li > button:hover{
+    background-color: #af5a68;
 }
 .obj{
     width: 100px;
@@ -59,6 +73,14 @@ select{
     align-items: center;
     height: 100vh;
     flex-direction: column;
+}
+#reorderItems{
+    border: #af5a68;
+    background-color: #F19EAC;
+    color: white;
+    border-radius: 5px;
+    padding: 2%;
+    cursor: pointer;
 }
 #startGame{
     cursor: pointer;
@@ -180,6 +202,7 @@ select{
     }
     #usersList{
         padding: 0;
+        flex-wrap: wrap;
     }
     #usersList >li{
         display: inline;
