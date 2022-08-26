@@ -14,9 +14,6 @@ const GIFTS = [
     { name: "Trago Suave x2", src: "./src/img/softTwo.svg", description: "tiene que tomar el trago más suave 2 veces" },
     { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
     { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
-    { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
-    { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
-    { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
 ]
 class User {
     constructor(index, name, genre) {
@@ -34,6 +31,7 @@ class User {
     }
     renderUser() {
         const li = document.createElement("li")
+
         li.innerText = this.name
         const button = document.createElement("button")
         button.innerText = "x"
@@ -287,10 +285,14 @@ function gameAlert() {
     console.log("results", results)
     let resultDescription = ""
     if (results[0].type === results[1].type) {
-        resultDescription = "Punto muerto, todos toman"
+        if (results[0].type == "USER") {
+            resultDescription = `${results[0].name} tiene que proponer un desafío a ${results[1].name}`
+        } else {
+            resultDescription = "Punto muerto, todos toman"
+        }
     } else {
         if (results[0].type === "USER") {
-            resultDescription = `${results[0].name} ${results[1].description}`
+            resultDescription = `${results[0].name} ${results[1].name}`
         } else {
             resultDescription = `${results[1].name} ${results[0].description}`
         }
