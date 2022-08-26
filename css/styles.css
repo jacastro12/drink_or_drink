@@ -164,6 +164,15 @@ select{
     color: gray;
  }
 
+  @media screen and (max-width: 1376px) {
+    .obj{
+        width: 70px;
+    }
+    #bottle{
+        width: 80px;
+    }
+ }
+
  @media screen and (max-width: 600px) {
     .wide-logo{
         display: none;
@@ -222,13 +231,6 @@ select{
         font-size: 10px;
     }
  }
- @media screen and (max-width: 1376px) {
-    .obj{
-        width: 70px;
-    }
-    #bottle{
-        width: 80px;
-    }
- }
+
 
  
