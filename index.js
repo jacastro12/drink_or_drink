@@ -1,7 +1,11 @@
-const users = [
-]
-let results = []
-let newArray = []
+// GLOBAL VARIABLE
+let NEWARRAY = []
+let RESULTS = []
+let BOTTLEFLAG = 0
+// GLOBAL CONSTANTS
+const USERS = []
+const USER = "USER"
+const GIFT = "GIFT"
 const GIFTS = [
     { name: "Desafío", src: "./src/img/desafio.svg", description: "tiene que realizar un desafío" },
     { name: "Verdad", src: "./src/img/truth.svg", description: "tiene que decir una verdad" },
@@ -15,12 +19,26 @@ const GIFTS = [
     { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
     { name: "Salvado", src: "./src/img/win.svg", description: "se salvó esta vez" },
 ]
+
+
+const USERSLIST = document.getElementById("usersList")
+const ADDUSERELEMENT = document.getElementById("addUser")
+const USERNAME = document.getElementById("userName")
+const USERGENRE = document.getElementById("userGenre")
+const STARTGAME = document.getElementById("startGame")
+const INITFORM = document.getElementById("initForm")
+const GAME = document.getElementById("game")
+const REORDERBTN = document.getElementById("reorderItems")
+const CIRCLEDIV = document.getElementById("circle")
+const BOTTLE = document.getElementById("bottle")
+
+
 class User {
     constructor(index, name, genre) {
         this.name = name
         this.index = index
         this.genre = genre
-        this.type = "USER"
+        this.type = USER
         let src = ""
         if (genre == "male") {
             src = "./src/img/male.svg"
@@ -31,7 +49,6 @@ class User {
     }
     renderUser() {
         const li = document.createElement("li")
-
         li.innerText = this.name
         const button = document.createElement("button")
         button.innerText = "x"
@@ -39,14 +56,14 @@ class User {
         li.appendChild(button)
         button.addEventListener("click", event => {
             event.target.parentNode.remove()
-            const index = users.find(element => element.index == event.target.id).index
+            const index = USERS.find(element => element.index == event.target.id).index
             this.removeUser(index)
         })
-        document.getElementById("usersList").appendChild(li)
-        users.push(this)
+        USERSLIST.appendChild(li)
+        USERS.push(this)
     }
     removeUser(index) {
-        users.splice(index - 1, 1)
+        USERS.splice(index - 1, 1)
     }
 }
 class Gift {
@@ -55,7 +72,7 @@ class Gift {
         this.name = name
         this.src = src
         this.description = description
-        this.type = "GIFT"
+        this.type = GIFT
         this.genre = "None"
     }
 }
@@ -81,36 +98,34 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function addUser() {
-    document.getElementById("addUser").addEventListener("click", () => {
-        const index = users.length + 1
-        const name = document.getElementById("userName")
-        const genre = document.getElementById("userGenre")
-        const user = new User(index, name.value, genre.value)
-        if (users.length > 1) document.getElementById("startGame").style.display = "block"
-        if (user.length > 3) document.getElementById("usersList").style.flexWrap = "wrap !important"
-        user.renderUser()
-        document.getElementById("userName").value = ""
-        document.getElementById("userName").focus()
-
+    ADDUSERELEMENT.addEventListener("click", () => {
+        if (USERNAME.value != "") {
+            const index = USERS.length + 1
+            const user = new User(index, USERNAME.value, USERGENRE.value)
+            if (USERS.length > 1) STARTGAME.style.display = "block"
+            if (user.length > 3) USERSLIST.style.flexWrap = "wrap !important"
+            user.renderUser()
+            USERNAME.value = ""
+            USERNAME.focus()
+        }
     })
 }
 
 
 function startGame() {
-    document.getElementById("startGame").addEventListener("click", () => {
-        document.getElementById("initForm").remove()
-        document.getElementById("game").style.display = "flex"
+    STARTGAME.addEventListener("click", () => {
+        INITFORM.remove()
+        GAME.style.display = "flex"
         renderElementsInCircle()
     })
 }
-document.getElementById("reorderItems").addEventListener("click", () => {
-    // setCircleItems(users)
+REORDERBTN.addEventListener("click", () => {
     renderElementsInCircle()
 })
 function setCircleItems(list) {
     // calcular el numero de grados para cada item
+    NEWARRAY = []
     const totalCircleitems = 16
-    newArray = []
     const missingCircleItems = totalCircleitems - list.length
     let newArrayIndex = 0
     for (newArrayIndex; newArrayIndex < missingCircleItems; newArrayIndex++) {
@@ -128,9 +143,9 @@ function setCircleItems(list) {
         if (counter >= 360) {
             counter = counter % 360
         }
-        newArray.push(circleItem)
+        NEWARRAY.push(circleItem)
     })
-    return newArray
+    return NEWARRAY
 }
 
 function randomizeArray(list) {
@@ -141,7 +156,7 @@ function randomizeArray(list) {
 }
 
 function renderElementsInCircle() {
-    document.getElementById("circle").innerHTML = ""
+    CIRCLEDIV.innerHTML = ""
     const n = 16;  // numero de circulos
     const screenWidth = screen.width
     // let r = 320 // radio
@@ -157,13 +172,12 @@ function renderElementsInCircle() {
         r = 320;
     }
 
-
     let angulo = 0;
 
     const div = document.createElement("div")
-    const circleItems = setCircleItems(users)
+    const circleItems = setCircleItems(USERS)
     circleItems.forEach(element => {
-        if (element.type == "USER") {
+        if (element.type == USER) {
             div.innerHTML += `<div class="element" initDegree="${element.init_degree}" endDegree="${element.end_degree}">
                             <img id="img${element.index}" class="obj" src="${element.src}">
                             <p>${element.name}</p>
@@ -175,10 +189,8 @@ function renderElementsInCircle() {
         }
 
     })
-    document.getElementById("circle").appendChild(div)
-
+    CIRCLEDIV.appendChild(div)
     const circles = document.querySelectorAll('.element')
-
     let originX = circles[0].offsetLeft
     let originY = circles[0].offsetTop
 
@@ -191,10 +203,8 @@ function renderElementsInCircle() {
 }
 
 
-const bottle = document.getElementById("bottle")
 let counter = 0;
-bottle.addEventListener("click", event => {
-    console.log(event.detail)
+BOTTLE.addEventListener("click", async () => {
     whiteBlackImage()
     rotateBottle()
 });
@@ -203,19 +213,18 @@ function rotateBottle() {
     const duration = randomIntFromInterval(1.00, 5.00) * 1000;
     const interval_id = setInterval(function () {
         counter += 1
-        bottle.style.webkitTransform = `rotate(${counter}deg)`;
-        const bottleGrades = getBottleTopGrades(bottle.style.webkitTransform)
+        BOTTLE.style.webkitTransform = `rotate(${counter}deg)`;
+        const bottleGrades = getBottleTopGrades(BOTTLE.style.webkitTransform)
         getResults(bottleGrades)
     }, 5);
 
     setTimeout(() => {
         clearInterval(interval_id)
-        const bottleGrades = getBottleTopGrades(bottle.style.webkitTransform)
+        const bottleGrades = getBottleTopGrades(BOTTLE.style.webkitTransform)
         getResults(bottleGrades, last = true)
         setTimeout(() => {
             gameAlert()
         }, 1200)
-
     }, duration);
 
 }
@@ -240,9 +249,9 @@ function getBottleTopGrades(grades_received) {
 
 function getResults(bottleDegree, last = false) {
     // console.log("Evaluando resultados...")
-    // console.log(newArray)
+    // console.log(NEWARRAY)
 
-    newArray.forEach(element => {
+    NEWARRAY.forEach(element => {
         const min = element.initDegree
         const max = element.endDegree
 
@@ -251,7 +260,7 @@ function getResults(bottleDegree, last = false) {
             document.getElementById(`img${element.index}`).style.filter = "grayscale(0%)"
             animateCSS(`#img${element.index}`, 'bounce');
             if (last) {
-                results.push(element)
+                RESULTS.push(element)
             }
         } else {
             document.getElementById(`img${element.index}`).style.filter = "grayscale(100%)"
@@ -260,20 +269,15 @@ function getResults(bottleDegree, last = false) {
 }
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
-    // We create a Promise and return it
     new Promise((resolve, reject) => {
         const animationName = `${prefix}${animation}`;
         const node = document.querySelector(element);
-
         node.classList.add(`${prefix}animated`, animationName);
-
-        // When the animation ends, we clean the classes and resolve the Promise
         function handleAnimationEnd(event) {
             event.stopPropagation();
             node.classList.remove(`${prefix}animated`, animationName);
             resolve('Animation ended');
         }
-
         node.addEventListener('animationend', handleAnimationEnd, { once: true });
     });
 
@@ -282,29 +286,27 @@ function get360Grades(grades) {
 }
 
 function gameAlert() {
-    console.log("results", results)
     let resultDescription = ""
-    if (results[0].type === results[1].type) {
-        if (results[0].type == "USER") {
-            resultDescription = `${results[0].name} tiene que proponer un desafío a ${results[1].name}`
+    if (RESULTS[0].type === RESULTS[1].type) {
+        if (RESULTS[0].type == USER) {
+            resultDescription = `${RESULTS[0].name} tiene que proponer un desafío a ${RESULTS[1].name}`
         } else {
             resultDescription = "Punto muerto, todos toman"
         }
     } else {
-        if (results[0].type === "USER") {
-            resultDescription = `${results[0].name} ${results[1].name}`
+        if (RESULTS[0].type === USER) {
+            resultDescription = `${RESULTS[0].name} ${RESULTS[1].name}`
         } else {
-            resultDescription = `${results[1].name} ${results[0].description}`
+            resultDescription = `${RESULTS[1].name} ${RESULTS[0].description}`
         }
     }
-    if (results[0] === results[1]) { }
+    if (RESULTS[0] === RESULTS[1]) { }
     Swal.fire({
         title: '<img src="./src/img/logo-color.svg" width="80%">',
-        // icon: 'info',
         html:
             '<br><div class="alertWindow">' +
-            `<div><img src="${results[0].src}"><p>${results[0].name}</p></div>` +
-            `<div><img src="${results[1].src}"><p>${results[1].name}</p></div>` +
+            `<div><img class="img-swal" src="${RESULTS[0].src}"><p>${RESULTS[0].name}</p></div>` +
+            `<div><img class="img-swal" src="${RESULTS[1].src}"><p>${RESULTS[1].name}</p></div>` +
             '</div>' +
             `<p class="results">${resultDescription}</p>`,
         showCloseButton: true,
@@ -321,5 +323,5 @@ function gameAlert() {
         confirmButtonAriaLabel: 'Thumbs up, great!',
 
     })
-    results = []
+    RESULTS = []
 }

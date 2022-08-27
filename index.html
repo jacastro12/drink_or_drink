@@ -16,23 +16,24 @@
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="./css/styles.css?v=7">
+    <link rel="stylesheet" href="./css/styles.css?v=8">
 </head>
 
 <body id="body">
     <div id="initForm">
         <img width="90%" class="animate__animated animate__swing wide-logo" src="./src/img/logo.svg" alt="">
         <img src="./src/img/responsive-logo.svg" class="animate__animated animate__swing responsive-logo" alt="">
-        <h3 class="animate__animated animate__fadeIn animate__delay-1s">Ingrese nome dos participantes</h3>
-
+        <h3 class="animate__animated animate__fadeIn animate__delay-1s">Ingrese el nombre de los participantes
+            <small>[mínimo 3]</small>
+        </h3>
         <div class="animate__animated animate__fadeInUpBig animate__delay-1s form">
-            <input type="text" placeholder="Ingrese seu nome" id="userName">
+            <input type="text" placeholder="Su nombre aquí..." id="userName">
             <select name="" id="userGenre">
-                <option value="male">Homem</option>
-                <option value="female">Mulher</option>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
                 <!-- <option value="other">Otro</option> -->
             </select>
-            <button id="addUser">Add</button>
+            <button id="addUser">Añadir</button>
         </div>
 
         <ul id="usersList">
@@ -42,10 +43,12 @@
     <div id="game">
         <img id="bottle" src="./src/img/bottle.svg" alt="" disabled="true">
         <div id="circle"></div>
+    </div>
+    <div class="reorderDiv">
         <button id="reorderItems"><i class="fa-solid fa-shuffle"></i> Reorganizar</button>
     </div>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="index.js?v=7"></script>
+    <script src="index.js?v=8"></script>
 </body>
 
 </html>

@@ -42,9 +42,7 @@ select{
     margin-top: 3%;
     padding: 0;
 }
-#reorderItems{
-    z-index: 200;
-}
+
 #usersList >li{
     display: flex;
     padding: 15px 15px 15px 15px;
@@ -81,6 +79,7 @@ select{
     border-radius: 5px;
     padding: 2%;
     cursor: pointer;
+    z-index: 200;
 }
 #startGame{
     cursor: pointer;
@@ -138,39 +137,45 @@ select{
     z-index: 1000;
 }
   
-  #circle{
+#circle{
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
-  }
+}
 
-  .alertWindow{
+.alertWindow{
     display: flex;
     flex-wrap: no;
     justify-content: center;
-  }
-  .alertWindow > div>img{
+}
+.alertWindow > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.alertWindow > div > img{
     width: 150px;
     margin-right:10px;
-  }
-  .alertWindow > div > p{
+}
+.alertWindow > div > p{
     margin-top: -1%;
     color: gray;
-  }
+}
  .results{
     color: gray;
  }
 
-  @media screen and (max-width: 1376px) {
+@media screen and (max-width: 1376px) {
     .obj{
         width: 70px;
     }
     #bottle{
         width: 80px;
     }
+    
  }
 
  @media screen and (max-width: 600px) {
@@ -179,6 +184,15 @@ select{
     }
     .responsive-logo{
         display: block;
+    }
+    .alertWindow > div>img{
+        width: 100px;
+        margin-right:10px;
+    }
+    .alertWindow > div > p{
+        margin-top: 2%;
+        color: gray;
+        font-size: 15px;
     }
     h3{
         font-size: 12px;
@@ -214,7 +228,6 @@ select{
         flex-wrap: wrap;
     }
     #usersList >li{
-        display: inline;
         padding: 8px 8px 8px 8px;
         border-radius: 5px;
         border: 2px solid #F19EAC;
@@ -229,6 +242,20 @@ select{
     }
     .element > p{
         font-size: 10px;
+    }
+    .reorderDiv{
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+    }
+    #reorderItems{
+        border: #af5a68;
+        background-color: #F19EAC;
+        color: white;
+        border-radius: 5px;
+        padding: 5%;
+        cursor: pointer;
+        z-index: 200;
     }
  }
 
