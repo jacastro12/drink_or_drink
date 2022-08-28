@@ -10,18 +10,21 @@ body{
 .responsive-logo{
     display: none;
 }
+
 input{
     padding: 15px 15px 15px 15px;
     border: none;
     border-radius: 5px;
     font-size: 24px;
 }
+
 select{
     padding: 15px 15px 15px 15px;
     border: none;
     border-radius: 5px;
     font-size: 24px;
 }
+
 #addUser{
     padding: 15px 15px 15px 15px;
     border: none;
@@ -31,10 +34,12 @@ select{
     background-color: #F19EAC;
     cursor:pointer;
 }
+
 #addUser:hover{
     background-color: #af5a68;
     border: 1px solid #F19EAC;
 }
+
 #usersList{
     display: flex;
     /* flex-wrap: wrap; */
@@ -72,6 +77,9 @@ select{
     height: 100vh;
     flex-direction: column;
 }
+.reorderDiv{
+    z-index: 300;
+}
 #reorderItems{
     border: #af5a68;
     background-color: #F19EAC;
@@ -81,6 +89,7 @@ select{
     cursor: pointer;
     z-index: 200;
 }
+
 #startGame{
     cursor: pointer;
     padding: 15px 15px 15px 15px;
@@ -113,6 +122,7 @@ select{
 
 #game{
     display: none;
+    z-index: -1;
 }
 
 .element{
@@ -144,6 +154,7 @@ select{
     top: 0;
     bottom: 0;
     margin: auto;
+    z-index: -1;
 }
 
 .alertWindow{
@@ -153,6 +164,7 @@ select{
 }
 .alertWindow > div{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -239,6 +251,15 @@ select{
     }
     #bottle{
         width: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -5%;
+        bottom: 0;
+        margin: auto;
+        z-index: 10;
+        cursor: pointer;
+
     }
     .element > p{
         font-size: 10px;
