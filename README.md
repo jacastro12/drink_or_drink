@@ -1,6 +1,6 @@
 
 # First Ironhack Project
-<img src="https://jacastro12.github.io/drink_or_drink/src/img/logo-color.svg" width="60%">
+<img src="https://jonacastroeras.github.io/drink_or_drink/src/img/logo-color.svg" width="60%">
 <h3>Developed by Jonathan Castro :v</h3>
 
 <p>Originally spin the bottle game is a kissing game that is often played by teenagers and adults at parties. As you get closer to each other, it is perfect to get to know each other as well. Here you have how to play this classic kissing in the Bottle Game. </p>
@@ -9,11 +9,11 @@
 
 # Rules
 
-|<img src="https://jacastro12.github.io/drink_or_drink/src/img/bottle.svg" width="30">  | Spin Bottle |
+|<img src="https://jonacastroeras.github.io/drink_or_drink/src/img/bottle.svg" width="30">  | Spin Bottle |
 |--|--|
-| <img src="https://jacastro12.github.io/drink_or_drink/src/img/female.svg" width="75"> | Female Participant |
-|<img src="https://jacastro12.github.io/drink_or_drink/src/img/male.svg" width="75">  | Male Participant |
-|<img src="https://jacastro12.github.io/drink_or_drink/src/img/softOne.svg" width="75">  | Challenge |
+| <img src="https://jonacastroeras.github.io/drink_or_drink/src/img/female.svg" width="75"> | Female Participant |
+|<img src="https://jonacastroeras.github.io/drink_or_drink/src/img/male.svg" width="75">  | Male Participant |
+|<img src="https://jonacastroeras.github.io/drink_or_drink/src/img/softOne.svg" width="75">  | Challenge |
 
 <p>Clic to the bottle, then wait for results, the program will tell the participants what they have to do.</p>
 
